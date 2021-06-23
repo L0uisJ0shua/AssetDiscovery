@@ -39,6 +39,8 @@ def main():
     # print(domainlist)
     start = time.time()
     for domain in domainlist:
+        subprocess.run(args=["mkdir", "{domain}"], shell=True)
+        subprocess.run(args=["cd", "{domain}"], shell=True)
         passive_enum_scan(domain)
         if args.brute_forcing:
             domain_brute(domain, args.wordlist)
@@ -46,8 +48,9 @@ def main():
         probe(domain)
         if args.nuclei:
             vuln_scanning(domain, args.templates)
-    end = time.time()
-    print(f"Runtime for the scan is {end - start} seconds")
+        end = time.time()
+        print(f"Runtime for the scan is {end - start} seconds")
+        subprocess.run(args=["cd", "../"], shell=True)
 
 def passive_enum_scan(domain: str):
     print(f"(+) Begining passive enumeration for {domain}")
