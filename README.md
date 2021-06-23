@@ -4,12 +4,12 @@ AssetDiscover is tool scripted for the use of discovery of assets from a given d
 
 # Setup
 To setup, there are a few prerequisite tools to install:
-    - Go
-    - Nuclei
-    - amass
-    - subfinder
-    - crobat
-    - httprobe
+* Go
+* Nuclei
+* amass
+* subfinder
+* crobat
+* httprobe
 
 There is currently a work-in-progress script that we are working on to help standardise installation to make it easier to setup.
 
