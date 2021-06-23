@@ -39,8 +39,8 @@ def main():
     # print(domainlist)
     start = time.time()
     for domain in domainlist:
-        subprocess.run(args=["mkdir", "{domain}"], shell=True)
-        subprocess.run(args=["cd", "{domain}"], shell=True)
+        subprocess.run(args=["mkdir", domain], shell=True)
+        subprocess.run(args=["cd", domain], shell=True)
         passive_enum_scan(domain)
         if args.brute_forcing:
             domain_brute(domain, args.wordlist)
