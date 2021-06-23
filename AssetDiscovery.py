@@ -1,6 +1,7 @@
 #!usr/bin/python3
 
 import sys
+import os
 import time
 import subprocess
 import argparse
@@ -38,9 +39,11 @@ def main():
     
     # print(domainlist)
     start = time.time()
+    cwd = os.getcwd()
     for domain in domainlist:
-        subprocess.run(args=["mkdir", domain], shell=True)
-        subprocess.run(args=["cd", domain], shell=True)
+        if not os.path.exists(cwd+f"/{domain}"):
+            os.mkdir(domain)
+        os.chdir(cwd+f"/{domain}")
         passive_enum_scan(domain)
         if args.brute_forcing:
             domain_brute(domain, args.wordlist)
@@ -50,7 +53,7 @@ def main():
             vuln_scanning(domain, args.templates)
         end = time.time()
         print(f"Runtime for the scan is {end - start} seconds")
-        subprocess.run(args=["cd", "../"], shell=True)
+        os.chdir("../")
 
 def passive_enum_scan(domain: str):
     print(f"(+) Begining passive enumeration for {domain}")
