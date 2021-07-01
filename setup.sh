@@ -7,7 +7,7 @@ set -e
 
 # Go
 echo "[-] Checking if Go is present..."
-if ! go_loc="$(type -p "go --version")" || [[ -z $go_loc ]]; then
+if ! go_loc="$(type -p 'go --version')" || [[ -z $go_loc ]]; then
     echo "[+] Grabbing Go..."
     wget https://golang.org/dl/go1.16.4.linux-amd64.tar.gz
     echo "[+] Installing Go lang..."
@@ -23,13 +23,22 @@ fi
 
 # httprobe
 echo "[-] Checking if httprobe is installed..."
-if ! probe_loc="$(type -p "httprobe")" || [[ -z $probe_loc ]]; then
+if ! probe_loc="$(type -p 'httprobe -h')" || [[ -z $probe_loc ]]; then
     echo "[+] Installing httpprobe..."
     go get -u github.com/tomnomnom/httprobe
     echo "[+] httprobe is installed successfully."
 else
     echo "[+] httprobe already installed."
 fi
+
+# SonarSearch
+echo "[-] Checking if SonarSearch is present..."
+if ! crobat_loc="$(type -p 'crobat')" || [[ -z $crobat_loc ]]; then
+    echo "[+] Installing SonarSearch..."
+    go get github.com/cgboal/sonarsearch/crobat
+    echo "[+] Installed SonarSearch"
+else
+    echo "[+] SonarSearch already installed."
 
 # amass
 echo "[-] Checking if OWASP Amass is installed..."
