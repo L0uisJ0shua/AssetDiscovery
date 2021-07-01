@@ -46,7 +46,7 @@ fi
 echo "[-] Checking if OWASP Amass is installed..."
 if ! amass_loc="$(type -p 'amass -version')" || [[ -z $amass_loc ]]; then
     echo "[+] Installing OWASP Amass..."
-    sudo apt install amass
+    sudo apt -y install amass
     amass -version
     echo "[+] OWASP Amass is installed successfully"
 else
