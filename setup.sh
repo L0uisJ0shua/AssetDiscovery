@@ -3,23 +3,24 @@
 ## TODO ##
 # Require testing if the script works well
 
-set -e
-
 # Go
 echo "[-] Checking if Go is present..."
 if ! go_loc="$(type -p 'go --version')" || [[ -z $go_loc ]]; then
     echo "[+] Grabbing Go..."
     wget https://golang.org/dl/go1.16.4.linux-amd64.tar.gz
     echo "[+] Installing Go lang..."
-    sudo rm /usr/local/go
+    sudo rm -rf /usr/local/go
     sudo tar -C /usr/local -xzf go1.16.4.linux-amd64.tar.gz
-    export PATH="$PATH:/usr/local/go"
+    sudo rm go1.16.4.linux-amd64.tar.gz
+    export PATH="$PATH:/usr/local/go/bin"
     export PATH="$PATH:$HOME/go/bin"
     go --version
     echo "[+] Go is installed successfully."
 else
     echo "[+] Go already installed."
 fi
+
+set -e
 
 # httprobe
 echo "[-] Checking if httprobe is installed..."
@@ -33,16 +34,17 @@ fi
 
 # SonarSearch
 echo "[-] Checking if SonarSearch is present..."
-if ! crobat_loc="$(type -p 'crobat')" || [[ -z $crobat_loc ]]; then
+if ! crobat_loc="$(type -p 'crobat -h')" || [[ -z $crobat_loc ]]; then
     echo "[+] Installing SonarSearch..."
     go get github.com/cgboal/sonarsearch/crobat
     echo "[+] Installed SonarSearch"
 else
     echo "[+] SonarSearch already installed."
+fi
 
 # amass
 echo "[-] Checking if OWASP Amass is installed..."
-if ! amass_loc="$(type -p "amass -version")" || [[ -z $amass_loc ]]; then
+if ! amass_loc="$(type -p 'amass -version')" || [[ -z $amass_loc ]]; then
     echo "[+] Installing OWASP Amass..."
     sudo apt install amass
     amass -version
@@ -54,7 +56,7 @@ fi
 
 # nuclei
 echo "[-] Checking if Nuclei is installed..."
-if ! amass_loc="$(type -p "nuclei -version")" || [[ -z $amass_loc ]]; then
+if ! amass_loc="$(type -p 'nuclei -version')" || [[ -z $amass_loc ]]; then
     echo "[+] Installing Nuclei..."
     GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
     nuclei -version
