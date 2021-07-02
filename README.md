@@ -4,14 +4,20 @@ AssetDiscover is tool scripted for the use of discovery of assets from a given d
 
 # Setup
 To setup, there are a few prerequisite tools to install:
-* Go
-* Nuclei
-* amass
-* subfinder
-* crobat
-* httprobe
+* [Go](https://golang.org/)
+* [Nuclei](https://github.com/projectdiscovery/nuclei)
+* [OWASP amass](https://github.com/OWASP/Amass)
+* [subfinder](https://github.com/projectdiscovery/subfinder)
+* [crobat](https://github.com/Cgboal/SonarSearch)
+* [httprobe](https://github.com/tomnomnom/httprobe)
 
-There is currently a work-in-progress script that we are working on to help standardise installation to make it easier to setup.
+For ease of setup (For Kali users):
+```bash
+sudo ./setup.sh
+```
+`setup.sh` requires root privileges as it places Go into your `/usr/local` folder and also uses apt to install amass.
+
+We will look into improving `setup.sh` further for non-Kali users in the future.
 
 # Usage
 
@@ -27,4 +33,5 @@ python3 AssetDiscover.py -d <domain> --brute-force -w <wordlist> --nuclei -t <di
 ```
 
 ## Why use this tool?
-This tool is created to help combine functionalities for different tools to better identify assets belonging to target and identify low-hanging fruits or common CVE vulnerabilities found in websites. This will allow users of the tool to identify targets and enumerate general web technology used by the website.
+This tool is created to help combine functionalities for different tools to better identify assets belonging to target and identify low-hanging fruits or common CVE vulnerabilities found in websites. This will allow users of the tool to identify targets and enumerate general web technology used by the websites.
+
