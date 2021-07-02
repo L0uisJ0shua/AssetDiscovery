@@ -27,7 +27,6 @@ def main():
     cwd = os.getcwd()
     start = time.time()
 
-    print(assets)
     for asset in assets:
         if asset == "":
             continue
@@ -49,7 +48,6 @@ def initial_scan(asset: str, ports: list):
     with open (f"{asset}_initial_nmap_scan.txt", "w+") as temp_file:
         for port in ports:
             port_numbers += f"{port},"
-        print(port_numbers[:-1])
         subprocess.run(args=f"nmap -p {port_numbers[:-1]} {asset}", shell=True, stdout=temp_file)
 
 if __name__ == "__main__":
