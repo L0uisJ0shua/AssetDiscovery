@@ -31,13 +31,13 @@ def main():
         if asset == "":
             continue
         ## Make Directory
-        if not os.path.exists(f"{cwd}/{asset}"):
-            os.mkdir(asset)
-        os.chdir(cwd+f"/{asset}")
+        # if not os.path.exists(f"{cwd}/{asset}"):
+        #     os.mkdir(asset)
+        # os.chdir(cwd+f"/{asset}")
 
         ## Conducting Enumeration
         initial_scan(asset, ports)
-        os.chdir("../")
+        # os.chdir("../")
 
     end = time.time()
     print(f"Runtime for the scan is {end - start} seconds")
@@ -48,7 +48,7 @@ def initial_scan(asset: str, ports: list):
     with open (f"{asset}_initial_nmap_scan.txt", "w+") as temp_file:
         for port in ports:
             port_numbers += f"{port},"
-        subprocess.run(args=f"nmap -p {port_numbers[:-1]} {asset}", shell=True, stdout=temp_file)
+            subprocess.run(args=f"nmap -Pn -p {port_numbers[:-1]} {asset}", shell=True, stdout=temp_file)
 
 if __name__ == "__main__":
     main()
