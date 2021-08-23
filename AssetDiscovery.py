@@ -41,6 +41,8 @@ def main():
     start = time.time()
     cwd = os.getcwd()
     for domain in domainlist:
+        if domain == "":
+            break
         if not os.path.exists(cwd+f"/{domain}"):
             os.mkdir(domain)
         os.chdir(cwd+f"/{domain}")
