@@ -45,10 +45,9 @@ fi
 
 # subfinder
 echo "[-] Checking if Subfinder is installed..."
-if ! amass_loc="$(type -p 'subfinder -h')" || [[ -z $amass_loc ]]; then
+if ! subfinder_loc="$(type -p 'subfinder -h')" || [[ -z $subfinder_loc ]]; then
     echo "[+] Installing Subfinder..."
     GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
-    subfinder -h
     echo "[+] subfinder installed successfully"
 else
     echo "[-] Subfinder already installed"
@@ -56,7 +55,7 @@ fi
 
 # nuclei
 echo "[-] Checking if Nuclei is installed..."
-if ! amass_loc="$(type -p 'nuclei -version')" || [[ -z $amass_loc ]]; then
+if ! nuclei_loc="$(type -p 'nuclei -h')" || [[ -z $nuclei_loc ]]; then
     echo "[+] Installing Nuclei..."
     GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
     nuclei -version
