@@ -36,7 +36,7 @@ fi
 echo "[-] Checking if SonarSearch is present..."
 if ! crobat_loc="$(type -p 'crobat -h')" || [[ -z $crobat_loc ]]; then
     echo "[+] Installing SonarSearch..."
-    go get github.com/cgboal/sonarsearch/crobat
+    go get github.com/Cgboal/SonarSearch/crobat
     echo "[+] Installed SonarSearch"
 else
     echo "[+] SonarSearch already installed."
