@@ -73,9 +73,9 @@ def passive_enum_scan(domain: str):
         print(f"(+) subfinder Scan completed. Elapsed Time: {time.time() - start}")
 
         ## Tool 3: Sonar
-        print("(+) Scanning target with sonar...")
-        subprocess.run(args=["crobat", "-s", domain], stdout=temp_file)
-        print(f"(+) Sonar Scan completed. Elapsed Time: {time.time() - start}")
+        #print("(+) Scanning target with sonar...")
+        #subprocess.run(args=["crobat", "-s", domain], stdout=temp_file)
+        #print(f"(+) Sonar Scan completed. Elapsed Time: {time.time() - start}")
 
 def cleanup(domain: str):
     """

@@ -32,16 +32,6 @@ else
     echo "[+] httprobe already installed."
 fi
 
-# SonarSearch
-echo "[-] Checking if SonarSearch is present..."
-if ! crobat_loc="$(type -p 'crobat -h')" || [[ -z $crobat_loc ]]; then
-    echo "[+] Installing SonarSearch..."
-    go get github.com/Cgboal/SonarSearch/crobat
-    echo "[+] Installed SonarSearch"
-else
-    echo "[+] SonarSearch already installed."
-fi
-
 # amass
 echo "[-] Checking if OWASP Amass is installed..."
 if ! amass_loc="$(type -p 'amass -version')" || [[ -z $amass_loc ]]; then
