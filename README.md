@@ -13,7 +13,7 @@ To setup, there are a few prerequisite tools to install:
 
 For ease of setup (For Kali users):
 ```bash
-sudo ./setup.sh
+./setup.sh
 ```
 `setup.sh` requires root privileges as it places Go into your `/usr/local` folder and also uses apt to install amass.
 
