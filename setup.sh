@@ -53,6 +53,16 @@ else
     echo "[+] OWASP Amass already installed."
 fi
 
+# subfinder
+echo "[-] Checking if Subfinder is installed..."
+if ! amass_loc="$(type -p 'subfinder -h')" || [[ -z $amass_loc ]]; then
+    echo "[+] Installing Subfinder..."
+    GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
+    subfinder -h
+    echo "[+] subfinder installed successfully"
+else
+    echo "[-] Subfinder already installed"
+fi
 
 # nuclei
 echo "[-] Checking if Nuclei is installed..."
