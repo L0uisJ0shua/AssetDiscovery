@@ -7,11 +7,11 @@
 echo "[-] Checking if Go is present..."
 if ! go_loc="$(type -p 'go --version')" || [[ -z $go_loc ]]; then
     echo "[+] Grabbing Go..."
-    wget https://golang.org/dl/go1.16.4.linux-amd64.tar.gz
+    wget https://golang.org/dl/go1.17.6.linux-amd64.tar.gz
     echo "[+] Installing Go lang..."
     sudo rm -rf /usr/local/go
-    sudo tar -C /usr/local -xzf go1.16.4.linux-amd64.tar.gz
-    sudo rm go1.16.4.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
+    sudo rm go1.17.6.linux-amd64.tar.gz
     export PATH="$PATH:/usr/local/go/bin"
     export PATH="$PATH:$HOME/go/bin"
     go --version
@@ -57,7 +57,7 @@ fi
 echo "[-] Checking if Nuclei is installed..."
 if ! nuclei_loc="$(type -p 'nuclei -h')" || [[ -z $nuclei_loc ]]; then
     echo "[+] Installing Nuclei..."
-    GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+    go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
     nuclei -version
     echo "[+] Nuclei is installed successfully"
 else
